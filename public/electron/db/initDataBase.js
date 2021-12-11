@@ -22,6 +22,7 @@ const initDataBase = (app) => {
           status: 1,
         },
       },
+      lightIP: '0.0.0.0'
     },
     false
   );

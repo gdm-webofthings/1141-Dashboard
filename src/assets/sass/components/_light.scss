@@ -1,0 +1,89 @@
+.light {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    'nav nav nav'
+    'cartesian controls points';
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr 1fr;
+  row-gap: 0;
+  column-gap: 4rem;
+
+  & > * {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid white;
+  }
+}
+
+.light__nav {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.light__nav-item {
+  padding: 0.5rem 2.5rem;
+  border: 1px solid #ffed48;
+  outline: none;
+  color: white;
+  background-color: transparent;
+  font-size: 1.25rem;
+
+  &--active {
+    color: #222128;
+    background-color: #ffed48;
+  }
+}
+
+.light__cartesian {
+  grid-area: cartesian;
+  margin-bottom: 2rem;
+  box-shadow: 4px 4px 15px #0004, 2px 3px 3px #0003;
+}
+
+.light__controls {
+  grid-area: controls;
+}
+
+.light__buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    background-color: #5959ef;
+    border: none;
+    outline: none;
+
+    &.full-width {
+      grid-column: 1 / -1;
+    }
+
+    &:disabled {
+      color: #1f2a40;
+    }
+  }
+}
+
+.light__points {
+  grid-area: points;
+  max-height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #5959ef;
+    border-radius: 0.25rem;
+  }
+}

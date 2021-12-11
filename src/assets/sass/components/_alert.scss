@@ -1,0 +1,10 @@
+.alert {
+  display: block;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+
+  &--error {
+    background-color: #f25b5b;
+  }
+}

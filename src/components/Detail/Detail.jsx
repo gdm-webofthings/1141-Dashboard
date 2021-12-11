@@ -1,6 +1,7 @@
-import { Route, Switch, Redirect } from "react-router-dom";
-import useData from "../../core/hooks/useData";
-import { ClientDetail } from "../../pages/templates/ClientDetail";
+import { Route, Switch, Redirect } from 'react-router-dom';
+import useData from '../../core/hooks/useData';
+import { ClientDetail } from '../../pages/templates/ClientDetail';
+import { LightController } from '../Light/LightController';
 
 export const Detail = () => {
   // Get data from context
@@ -12,6 +13,11 @@ export const Detail = () => {
         {/* Default screen client */}
         <Route path={`/Client-00`}>
           <ClientDetail data={data.clients[0]} noHeader />
+        </Route>
+
+        {/* Light controller */}
+        <Route path="/light">
+          <LightController />
         </Route>
 
         {/* Create a separate component for each client*/}

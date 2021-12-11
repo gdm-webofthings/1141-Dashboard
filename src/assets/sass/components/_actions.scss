@@ -1,7 +1,7 @@
 .actions {
   &__container {
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 100px;
+    grid-template-columns: 0.5fr 1fr 1fr 100px 100px;
     align-items: center;
     gap: 10px;
   }
@@ -36,13 +36,20 @@
         font-size: 50px;
       }
     }
+    &--light {
+      background-color: #ffed48;
+      i {
+        font-size: 50px;
+        color: #222128;
+      }
+    }
   }
 }
 
 .timerActions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "header header";
+  grid-template-areas: 'header header';
 
   gap: 0 10px;
   height: 90%;

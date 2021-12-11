@@ -337,6 +337,74 @@ template {
   display: none;
 }
 
+.MafsWrapper,
+.MafsView {
+  height: 100%;
+}
+
+.MafsView {
+  display: block;
+  background: var(--mafs-bg);
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  --mafs-bg: black;
+  --mafs-fg: white;
+  --mafs-origin-color: var(--mafs-fg);
+  --mafs-line-color: #555;
+  --grid-line-subdivision-color: #222;
+  --mafs-red: #f11d0e;
+  --mafs-orange: #f14e0e;
+  --mafs-yellow: #ffe44a;
+  --mafs-green: #15e272;
+  --mafs-blue: #58a6ff;
+  --mafs-indigo: #7c58ff;
+  --mafs-violet: #ae58ff;
+  --mafs-pink: #ee00ab;
+}
+
+.MafsView text {
+  fill: var(--mafs-fg);
+  cursor: default;
+}
+
+.MafsView path {
+  stroke: var(--mafs-fg);
+}
+
+.MafsWrapper,
+.MafsView .draggable-hitbox {
+  touch-action: none;
+}
+
+.MafsView .draggable {
+  transition: r 0.2s ease, stroke-width 0.2s ease;
+  stroke-width: 18px;
+  cursor: grab;
+  outline: 0 !important;
+  touch-action: none;
+  color: #f00000;
+}
+
+.MafsView .draggable:active {
+  cursor: grabbing;
+}
+
+.MafsView .draggable:focus,
+.MafsView circle.draggable:hover,
+.MafsView circle.draggable.dragging {
+  stroke-width: 0;
+}
+
+.MafsView .shadow {
+  paint-order: stroke;
+  stroke-width: 3px;
+  stroke: var(--mafs-bg);
+  stroke-opacity: 0.75;
+}
+
 * {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -390,9 +458,155 @@ button:hover {
 button:active {
   transform: scale(100%);
 }
+button:disabled {
+  opacity: 0.5;
+}
+button:disabled:hover {
+  transform: none;
+  cursor: default;
+}
 
 .error {
   border: 2px solid red !important;
+}
+
+.actions__container {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 100px 100px;
+  align-items: center;
+  gap: 10px;
+}
+.actions__btn {
+  height: 90%;
+  width: 100%;
+  font-size: 30px;
+  border-radius: 5px;
+  border: 1px solid #222128;
+  cursor: pointer;
+}
+.actions__btn--start {
+  background-color: #42bf50;
+}
+.actions__btn--stop {
+  background-color: #f25b5b;
+}
+.actions__btn--pause {
+  background-color: #feb019;
+}
+.actions__btn--reset {
+  background-color: #f25b5b;
+}
+.actions__btn--camera {
+  background-color: #5959ef;
+  color: white;
+}
+.actions__btn--camera i {
+  font-size: 50px;
+}
+.actions__btn--light {
+  background-color: #ffed48;
+}
+.actions__btn--light i {
+  font-size: 50px;
+  color: #222128;
+}
+
+.timerActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "header header";
+  gap: 0 10px;
+  height: 90%;
+  border-radius: 5px;
+}
+.timerActions__top {
+  grid-area: header;
+  margin: 0;
+}
+.timerActions__btn, .timerActions__btn--sub, .timerActions__btn--add, .timerActions__btn--pause {
+  border-radius: 5px;
+  border: none;
+  font-size: 30px;
+}
+.timerActions__btn--pause {
+  background-color: #feb019;
+}
+.timerActions__btn--add {
+  background-color: #42bf50;
+}
+.timerActions__btn--sub {
+  background-color: #f25b5b;
+}
+
+.alert {
+  display: block;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+.alert--error {
+  background-color: #f25b5b;
+}
+
+.chat__container {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+.chat__container input {
+  padding: 0;
+  padding-left: 10px;
+  height: 60px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #222128;
+  color: black;
+}
+.chat__container button {
+  height: 64px;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #222128;
+  border-left: 0;
+  background-color: #1f2a40;
+  cursor: pointer;
+  font-size: 25px;
+}
+.chat__container button:active {
+  transform: scale(98%);
+}
+
+.tip__title {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.tip__container {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.tip__container select {
+  padding: 0;
+  padding-left: 10px;
+  height: 45px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #222128;
+  color: black;
+  font-size: 20px;
+}
+.tip__container button {
+  height: 45px;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #222128;
+  border-left: 0;
+  background-color: #5959ef;
+  cursor: pointer;
+  font-size: 25px;
+}
+.tip__container button:active {
+  transform: scale(98%);
 }
 
 .client__container {
@@ -471,10 +685,6 @@ button:active {
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px -3px 8px;
 }
-.client__footer .ip {
-  margin: 0;
-  margin-bottom: 10px;
-}
 .client__footer .client__item {
   width: 100%;
   margin: 7px 10px !important;
@@ -482,126 +692,19 @@ button:active {
   border: 1px solid #222128;
 }
 
-.chat__container {
+.configure__container {
   display: grid;
-  grid-template-columns: 85% 15%;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
+  grid-template-columns: auto;
+  padding: 20px;
 }
-.chat__container input {
-  padding: 0;
-  padding-left: 10px;
-  height: 60px;
-  border-radius: 5px 0 0 5px;
-  border: 1px solid #222128;
-  color: black;
-}
-.chat__container button {
-  height: 64px;
-  border-radius: 0 5px 5px 0;
-  border: 1px solid #222128;
-  border-left: 0;
+.configure__content {
   background-color: #1f2a40;
-  cursor: pointer;
-  font-size: 25px;
-}
-.chat__container button:active {
-  transform: scale(98%);
-}
-
-.tip__title {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-.tip__container {
-  display: grid;
-  grid-template-columns: 85% 15%;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-.tip__container select {
-  padding: 0;
-  padding-left: 10px;
-  height: 45px;
-  border-radius: 5px 0 0 5px;
   border: 1px solid #222128;
-  color: black;
-  font-size: 20px;
-}
-.tip__container button {
-  height: 45px;
-  border-radius: 0 5px 5px 0;
-  border: 1px solid #222128;
-  border-left: 0;
-  background-color: #5959ef;
-  cursor: pointer;
-  font-size: 25px;
-}
-.tip__container button:active {
-  transform: scale(98%);
-}
-
-.actions__container {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 1fr 100px;
-  align-items: center;
-  gap: 10px;
-}
-.actions__btn {
-  height: 90%;
-  width: 100%;
-  font-size: 30px;
   border-radius: 5px;
-  border: 1px solid #222128;
-  cursor: pointer;
+  padding: 20px;
 }
-.actions__btn--start {
-  background-color: #42bf50;
-}
-.actions__btn--stop {
-  background-color: #f25b5b;
-}
-.actions__btn--pause {
-  background-color: #feb019;
-}
-.actions__btn--reset {
-  background-color: #f25b5b;
-}
-.actions__btn--camera {
-  background-color: #5959ef;
-  color: white;
-}
-.actions__btn--camera i {
-  font-size: 50px;
-}
-
-.timerActions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: "header header";
-  gap: 0 10px;
-  height: 90%;
-  border-radius: 5px;
-}
-.timerActions__top {
-  grid-area: header;
+.configure__content h1 {
   margin: 0;
-}
-.timerActions__btn, .timerActions__btn--sub, .timerActions__btn--add, .timerActions__btn--pause {
-  border-radius: 5px;
-  border: none;
-  font-size: 30px;
-}
-.timerActions__btn--pause {
-  background-color: #feb019;
-}
-.timerActions__btn--add {
-  background-color: #42bf50;
-}
-.timerActions__btn--sub {
-  background-color: #f25b5b;
 }
 
 .detail__container {
@@ -671,46 +774,84 @@ button:active {
   box-shadow: #27e8a7 0px 0px 10px;
 }
 
-.progress__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-}
-.progress__bar {
-  height: 30px;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid #222128;
-  border-radius: 10px;
-  background-color: white;
-}
-.progress__fill {
-  background-color: #5959ef;
+.light {
   height: 100%;
+  display: grid;
+  grid-template-areas: "nav nav nav" "cartesian controls points";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr 1fr;
+  row-gap: 0;
+  column-gap: 4rem;
 }
-.progress__timer {
-  margin: 0;
-  text-align: center;
+.light > * {
+  margin-bottom: 2rem;
 }
-.progress__button {
-  height: 30px;
-  background-color: transparent;
+.light h2 {
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid white;
+}
+
+.light__nav {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.light__nav-item {
+  padding: 0.5rem 2.5rem;
+  border: 1px solid #ffed48;
+  outline: none;
   color: white;
+  background-color: transparent;
+  font-size: 1.25rem;
+}
+.light__nav-item--active {
+  color: #222128;
+  background-color: #ffed48;
+}
+
+.light__cartesian {
+  grid-area: cartesian;
+  margin-bottom: 2rem;
+  box-shadow: 4px 4px 15px #0004, 2px 3px 3px #0003;
+}
+
+.light__controls {
+  grid-area: controls;
+}
+
+.light__buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1rem;
+}
+.light__buttons button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  background-color: #5959ef;
   border: none;
-  cursor: pointer;
-  font-size: 25px;
-  padding: 0;
-  min-width: 50px;
+  outline: none;
 }
-.progress__button p {
-  margin: 0;
+.light__buttons button.full-width {
+  grid-column: 1/-1;
 }
-.progress__button p:hover {
-  color: #cbcbcb;
+.light__buttons button:disabled {
+  color: #1f2a40;
 }
-.progress__button p:hover i {
-  color: #cbcbcb;
+
+.light__points {
+  grid-area: points;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.light__points::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.light__points::-webkit-scrollbar-thumb {
+  background-color: #5959ef;
+  border-radius: 0.25rem;
 }
 
 .modal {
@@ -885,19 +1026,107 @@ button:active {
   border-left: none;
 }
 
-.configure__container {
-  display: grid;
-  grid-template-columns: auto;
-  padding: 20px;
+.progress__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
-.configure__content {
-  background-color: #1f2a40;
+.progress__bar {
+  height: 30px;
+  width: 100%;
+  overflow: hidden;
   border: 1px solid #222128;
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
 }
-.configure__content h1 {
+.progress__fill {
+  background-color: #5959ef;
+  height: 100%;
+}
+.progress__timer {
   margin: 0;
+  text-align: center;
+}
+.progress__button {
+  height: 30px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  padding: 0;
+  min-width: 50px;
+}
+.progress__button p {
+  margin: 0;
+}
+.progress__button p:hover {
+  color: #cbcbcb;
+}
+.progress__button p:hover i {
+  color: #cbcbcb;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  background: #ffffff;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+
+.loader {
+  color: #ffffff;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loader:before,
+.loader:after {
+  position: absolute;
+  top: 0;
+  content: "";
+}
+
+.loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.loader:after {
+  left: 1.5em;
+}
+
+@-webkit-keyframes load1 {
+  0%, 80%, 100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%, 80%, 100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

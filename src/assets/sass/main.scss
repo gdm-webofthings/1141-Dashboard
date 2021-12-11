@@ -2,15 +2,19 @@
 
 // 1. Vendors
 @use "./vendors/normalize";
+@use "./vendors/mafs";
 
 // 2. Base
 @use "./base/base";
 
 // 3. Components
-@use "./components/client";
-@use "./components/chat";
 @use "./components/actions";
-@use "./components/detail";
-@use "./components/progress";
-@use "./components/modal";
+@use "./components/alert";
+@use "./components/chat";
+@use "./components/client";
 @use "./components/configure";
+@use "./components/detail";
+@use "./components/light";
+@use "./components/modal";
+@use "./components/progress";
+@use "./components/spinner";
