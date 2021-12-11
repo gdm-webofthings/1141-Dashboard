@@ -446,6 +446,7 @@ main {
 }
 
 .interactive__container {
+  height: 100vh;
   display: grid;
   grid-template-rows: 60px 100px auto 80px;
   padding: 0 20px;
@@ -708,11 +709,13 @@ button:disabled:hover {
 }
 
 .detail__container {
+  position: relative;
   background-color: #1f2a40;
   border: 1px solid #222128;
   border-radius: 5px;
   margin: 10px 0;
   padding: 0 20px;
+  overflow-y: hidden;
 }
 .detail__header {
   display: flex;
@@ -852,6 +855,33 @@ button:disabled:hover {
 .light__points::-webkit-scrollbar-thumb {
   background-color: #5959ef;
   border-radius: 0.25rem;
+}
+
+.light-config {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.light-config > button {
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  background-color: #5959ef;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #222128;
+  cursor: pointer;
+}
+.light-config > button i {
+  font-size: 18px;
+}
+.light-config form div.creation-scroll {
+  grid-template-rows: 40px !important;
+}
+.light-config form button {
+  background-color: #5959ef;
+  border: none;
+  border-radius: 5px;
 }
 
 .modal {

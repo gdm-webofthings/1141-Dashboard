@@ -8,6 +8,8 @@ const {
   deleteClient,
   saveOnState,
   setPlayers,
+  getLightIp,
+  saveLightIp,
 } = require("../db/dbFunctions");
 const { formatGetClients } = require("../db/formatFunctions");
 const actionsFilter = require("./globalActions/actionsFilter");
@@ -32,4 +34,6 @@ module.exports = () => {
   ipcMain.on("checkLive", (e, args) => checkLive());
   ipcMain.on("setPlayers", (e, args) => setPlayers(args));
   ipcMain.on("endGame", (e, args) => console.log("game ended"));
+  ipcMain.on("getLightIp", (e, args) => e.returnValue = getLightIp())
+  ipcMain.on("saveLightIp", (e, args) => { saveLightIp(args) })
 };

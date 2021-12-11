@@ -43,6 +43,7 @@ main {
 }
 
 .interactive__container {
+  height: 100vh;
   display: grid;
   grid-template-rows: 60px 100px auto 80px;
 

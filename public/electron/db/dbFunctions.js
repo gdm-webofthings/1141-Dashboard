@@ -56,6 +56,16 @@ const saveState = ({ address, args }) => {
   sendClients();
 };
 
+// Get IP of light API
+const getLightIp = () => {
+  return appData.dataBase.getData("/lightIP");
+}
+
+const saveLightIp = (ip) => {
+  appData.dataBase.push("/lightIP", ip, true);
+  sendClients();
+}
+
 module.exports = {
   sendClients,
   saveClient,
@@ -63,4 +73,6 @@ module.exports = {
   saveState,
   saveOnState,
   setPlayers,
+  getLightIp,
+  saveLightIp,
 };

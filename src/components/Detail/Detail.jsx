@@ -1,7 +1,7 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import useData from '../../core/hooks/useData';
 import { ClientDetail } from '../../pages/templates/ClientDetail';
-import { LightController } from '../Light/LightController';
+import { Light } from '../Light/Light';
 
 export const Detail = () => {
   // Get data from context
@@ -17,7 +17,7 @@ export const Detail = () => {
 
         {/* Light controller */}
         <Route path="/light">
-          <LightController />
+          <Light />
         </Route>
 
         {/* Create a separate component for each client*/}

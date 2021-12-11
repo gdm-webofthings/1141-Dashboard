@@ -1,16 +1,23 @@
 import { useState } from 'react';
 
-import { useFetch } from '../../core/hooks/useFetch.js';
-import { LightNav } from './LightNav.jsx';
-import { LightPanel } from './LightPanel.jsx';
+import { useFetch } from '../../core/hooks/useFetch';
+import { LightNav } from './LightNav';
+import { LightPanel } from './LightPanel';
 import { Spinner } from './Spinner';
 
-export const apiBaseUrl = 'http://localhost:3001/api'; // TODO: Get IP address from .env
+export const apiBaseUrl = 'http://localhost:3001/api'; // TODO: Get IP address from DataProvider
 export const names = ['Jane', 'Mary'];
 
-export const LightController = () => {
+export const LightController = ({ ip }) => {
+  const apiBaseUrl = `${ip}:3001/api`;
+
   const [active, setActive] = useState(names[0]);
-  const { data, error, loading, updateData } = useFetch(`${apiBaseUrl}/paths`);
+  const {
+    data: paths,
+    error,
+    loading,
+    updateData,
+  } = useFetch(`${apiBaseUrl}/paths`);
 
   if (loading) {
     return <Spinner />;
@@ -18,7 +25,7 @@ export const LightController = () => {
 
   if (error) {
     return (
-      <p className="alert alert--error">
+      <p className="alert alert--error" style={{ marginTop: '5rem' }}>
         Failed to fetch data. Error: {error.message}
       </p>
     );
@@ -26,11 +33,11 @@ export const LightController = () => {
 
   const updatePath = (points) => {
     updateData(
-      data.map((path) => (path.name === active ? { ...path, points } : path))
+      paths.map((path) => (path.name === active ? { ...path, points } : path))
     );
   };
 
-  const points = data?.find((path) => path.name === active)?.points ?? [];
+  const points = paths?.find((path) => path.name === active)?.points ?? [];
 
   return (
     <section className="light">
