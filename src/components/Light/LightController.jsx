@@ -5,11 +5,11 @@ import { LightNav } from "./LightNav";
 import { LightPanel } from "./LightPanel";
 import { Spinner } from "./Spinner";
 
-export const apiBaseUrl = "http://localhost:3001/api"; // TODO: Get IP address from DataProvider
 export const names = ["Jane", "Mary"];
 
 export const LightController = ({ ip }) => {
-  const apiBaseUrl = `${ip}:3001/api`;
+  const apiBaseUrl = `http://${ip}:3001/api`;
+
 
   const [active, setActive] = useState(names[0]);
   const {
@@ -42,7 +42,9 @@ export const LightController = ({ ip }) => {
   return (
     <section className="light">
       <LightNav active={active} setActive={setActive} />
-      <LightPanel active={active} initialPoints={points} onSave={updatePath} />
+
+      <LightPanel active={active} url={apiBaseUrl} initialPoints={points} onSave={updatePath} />
+
     </section>
   );
 };

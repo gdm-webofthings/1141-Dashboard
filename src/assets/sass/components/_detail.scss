@@ -8,7 +8,19 @@
     margin: 10px 0;
     padding: 0 20px;
 
-    overflow-y: hidden;
+    overflow-y: auto;
+
+
+    &::-webkit-scrollbar {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: #5959ef;
+      border-radius: 0.25rem;
+    }
+
   }
 
   &__header {

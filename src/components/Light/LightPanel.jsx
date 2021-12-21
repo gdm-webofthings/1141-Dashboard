@@ -3,13 +3,14 @@ import { useEffect } from 'react';
 import { useMutation } from '../../core/hooks/useMutation.js';
 
 import { BezierCurve } from './BezierCurve.jsx';
-import { apiBaseUrl } from './LightController.jsx';
+
 import { Room } from './Room.jsx';
 
-export const LightPanel = ({ active, initialPoints, onSave }) => {
+export const LightPanel = ({ active, url, initialPoints, onSave }) => {
   const { points, elements, addPoints, setPoints, deletePoints } =
     useMovablePoints(initialPoints);
-  const mutation = useMutation(`${apiBaseUrl}/paths/${active}`, {
+  const mutation = useMutation(`${url}/paths/${active}`, {
+
     method: 'PUT',
   });
 
@@ -30,8 +31,10 @@ export const LightPanel = ({ active, initialPoints, onSave }) => {
     <>
       <div className="light__cartesian">
         <Mafs
-          width={600}
-          height={600}
+
+          width={500}
+          height={500}
+
           xAxisExtent={[-0.5, 3.5]}
           yAxisExtent={[-0.5, 3.5]}
         >

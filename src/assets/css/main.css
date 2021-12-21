@@ -725,7 +725,15 @@ button:disabled:hover {
   border-radius: 5px;
   margin: 10px 0;
   padding: 0 20px;
-  overflow-y: hidden;
+  overflow-y: auto;
+}
+.detail__container::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.detail__container::-webkit-scrollbar-thumb {
+  background-color: #5959ef;
+  border-radius: 0.25rem;
 }
 .detail__header {
   display: flex;
@@ -743,6 +751,7 @@ button:disabled:hover {
   background-color: #5959ef;
   color: white;
   border-radius: 5px;
+
   border: 1px solid #222128;
   cursor: pointer;
 }
@@ -827,8 +836,7 @@ button:disabled:hover {
 
 .light__cartesian {
   grid-area: cartesian;
-  margin-bottom: 2rem;
-  box-shadow: 4px 4px 15px #0004, 2px 3px 3px #0003;
+  padding-bottom: 2rem;
 }
 
 .light__controls {
@@ -857,6 +865,10 @@ button:disabled:hover {
 .light__points {
   grid-area: points;
   max-height: 100%;
+
+  min-width: max-content;
+  padding-right: 1rem;
+
   overflow-y: auto;
 }
 .light__points::-webkit-scrollbar {
@@ -865,6 +877,9 @@ button:disabled:hover {
 .light__points::-webkit-scrollbar-thumb {
   background-color: #5959ef;
   border-radius: 0.25rem;
+}
+.light__points::-webkit-scrollbar-track {
+  background-color: #1f2a40;
 }
 
 .light-config {
